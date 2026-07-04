@@ -1,0 +1,16 @@
+{
+  "name": "Visao360",
+  "short_name": "Visao360",
+  "description": "Soluções completas em segurança eletrônica, automação e inteligência artificial.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#0D6EFD",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
