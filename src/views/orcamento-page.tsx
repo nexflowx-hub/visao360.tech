@@ -26,11 +26,11 @@ export function OrcamentoPage({ onBack }: OrcamentoPageProps) {
   };
 
   return (
-    <div className="pt-20 min-h-screen">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+    <div className="pt-16 md:pt-20 min-h-screen">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 md:py-16">
         <button
           onClick={onBack}
-          className="inline-flex items-center gap-1.5 text-muted-foreground hover:text-foreground text-sm mb-8 transition-colors"
+          className="inline-flex items-center gap-1.5 text-muted-foreground hover:text-foreground text-sm mb-6 md:mb-8 transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
           Voltar
@@ -43,13 +43,13 @@ export function OrcamentoPage({ onBack }: OrcamentoPageProps) {
           className="max-w-lg"
         >
           {sent ? (
-            <div className="text-center py-16">
+            <div className="text-center py-12 md:py-16">
               <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
                 <MessageCircle className="w-8 h-8 text-primary" />
               </div>
-              <h1 className="text-2xl font-bold text-foreground mb-2">Mensagem enviada!</h1>
-              <p className="text-muted-foreground mb-6">Você foi redirecionado para o WhatsApp. Se não abriu automaticamente, clique no botão abaixo.</p>
-              <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg">
+              <h1 className="text-xl sm:text-2xl font-bold text-foreground mb-2">Mensagem enviada!</h1>
+              <p className="text-sm sm:text-base text-muted-foreground mb-6">Você foi redirecionado para o WhatsApp. Se não abriu automaticamente, clique no botão abaixo.</p>
+              <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg h-12 px-8">
                 <a href={COMPANY.whatsappLink} target="_blank" rel="noopener noreferrer">
                   <MessageCircle className="mr-2 w-4 h-4" />
                   Abrir WhatsApp
@@ -58,21 +58,21 @@ export function OrcamentoPage({ onBack }: OrcamentoPageProps) {
             </div>
           ) : (
             <>
-              <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-2">Solicitar orçamento</h1>
-              <p className="text-muted-foreground mb-8 leading-relaxed">Preencha seus dados e entraremos em contato pelo WhatsApp.</p>
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-2">Solicitar orçamento</h1>
+              <p className="text-sm sm:text-base text-muted-foreground mb-8 leading-relaxed">Preencha seus dados e entraremos em contato pelo WhatsApp.</p>
 
-              <div className="space-y-5">
+              <div className="space-y-4 md:space-y-5">
                 <div className="space-y-1.5">
                   <Label htmlFor="o-name" className="text-sm">Nome completo</Label>
-                  <Input id="o-name" placeholder="Seu nome" value={data.name} onChange={(e) => setData(p => ({ ...p, name: e.target.value }))} className="h-10" />
+                  <Input id="o-name" placeholder="Seu nome" value={data.name} onChange={(e) => setData(p => ({ ...p, name: e.target.value }))} className="h-11 sm:h-12" />
                 </div>
                 <div className="space-y-1.5">
                   <Label htmlFor="o-whatsapp" className="text-sm">WhatsApp</Label>
-                  <Input id="o-whatsapp" placeholder="(62) 99999-9999" value={data.whatsapp} onChange={(e) => setData(p => ({ ...p, whatsapp: e.target.value }))} className="h-10" />
+                  <Input id="o-whatsapp" placeholder="(62) 99999-9999" value={data.whatsapp} onChange={(e) => setData(p => ({ ...p, whatsapp: e.target.value }))} className="h-11 sm:h-12" />
                 </div>
                 <div className="space-y-1.5">
                   <Label htmlFor="o-city" className="text-sm">Cidade</Label>
-                  <Input id="o-city" placeholder="Sua cidade" value={data.city} onChange={(e) => setData(p => ({ ...p, city: e.target.value }))} className="h-10" />
+                  <Input id="o-city" placeholder="Sua cidade" value={data.city} onChange={(e) => setData(p => ({ ...p, city: e.target.value }))} className="h-11 sm:h-12" />
                 </div>
                 <div className="space-y-1.5">
                   <Label htmlFor="o-cat" className="text-sm">Área de interesse</Label>
@@ -80,7 +80,7 @@ export function OrcamentoPage({ onBack }: OrcamentoPageProps) {
                     id="o-cat"
                     value={data.category}
                     onChange={(e) => setData(p => ({ ...p, category: e.target.value }))}
-                    className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                    className="flex h-11 sm:h-12 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                   >
                     <option value="">Selecione...</option>
                     {MAIN_CATEGORIES.filter(c => c.id !== "store").map(c => (
@@ -103,7 +103,7 @@ export function OrcamentoPage({ onBack }: OrcamentoPageProps) {
                 <Button
                   onClick={handleSubmit}
                   disabled={!data.name || !data.whatsapp || !data.city}
-                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg h-11 font-semibold text-sm"
+                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg h-12 font-semibold text-sm"
                 >
                   <Send className="w-4 h-4 mr-2" />
                   Enviar

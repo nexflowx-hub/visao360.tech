@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Menu, X, MessageCircle } from "lucide-react";
+import { Menu, X, MessageCircle, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
 import { ThemeToggle } from "@/components/visao/theme-toggle";
@@ -26,13 +26,13 @@ export function Topbar() {
       animate={{ y: 0 }}
       transition={{ duration: 0.4, ease: "easeOut" }}
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 bg-white transition-all duration-200",
+        "fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm transition-all duration-200",
         scrolled && "border-b border-border shadow-sm"
       )}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
-          <a href="#/" className="flex items-center gap-2">
+          <a href="#/" className="flex items-center gap-2 shrink-0">
             <Image src="/logo.png" alt="Visao360" width={36} height={36} className="rounded-md" />
             <span className="text-lg font-bold tracking-tight">
               <span className="text-foreground">Visao</span>
@@ -40,7 +40,7 @@ export function Topbar() {
             </span>
           </a>
 
-          <nav className="hidden lg:flex items-center gap-1">
+          <nav className="hidden lg:flex items-center gap-0.5">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.href}
@@ -52,11 +52,20 @@ export function Topbar() {
             ))}
           </nav>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 sm:gap-3">
+            {/* Phone number — visible on md+ */}
+            <a
+              href={`tel:+${COMPANY.whatsappNumber}`}
+              className="hidden md:inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <Phone className="w-3.5 h-3.5" />
+              <span className="font-medium">{COMPANY.whatsapp}</span>
+            </a>
+
             <ThemeToggle />
             <Button
               asChild
-              className="hidden sm:inline-flex bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg px-5 text-sm font-semibold h-9"
+              className="hidden sm:inline-flex bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg px-4 lg:px-5 text-sm font-semibold h-9"
             >
               <a href={COMPANY.whatsappLink} target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="w-4 h-4 mr-1.5" />
@@ -93,13 +102,20 @@ export function Topbar() {
                         key={link.href}
                         href={link.href}
                         onClick={() => setMobileOpen(false)}
-                        className="block px-4 py-3 text-sm font-medium text-foreground hover:text-primary hover:bg-muted rounded-xl transition-colors"
+                        className="block px-4 py-3.5 text-sm font-medium text-foreground hover:text-primary hover:bg-muted rounded-xl transition-colors"
                       >
                         {link.label}
                       </a>
                     ))}
                   </nav>
-                  <div className="p-4 border-t border-border">
+                  <div className="p-4 border-t border-border space-y-3">
+                    <a
+                      href={`tel:+${COMPANY.whatsappNumber}`}
+                      className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      <Phone className="w-4 h-4" />
+                      {COMPANY.whatsapp}
+                    </a>
                     <Button asChild className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg">
                       <a href={COMPANY.whatsappLink} target="_blank" rel="noopener noreferrer">
                         <MessageCircle className="w-4 h-4 mr-2" />

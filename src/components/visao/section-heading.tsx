@@ -17,14 +17,14 @@ export function SectionHeading({ title, highlight, subtitle, className }: Sectio
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.5 }}
-      className={cn("max-w-2xl mx-auto text-center", className)}
+      className={cn("max-w-2xl mx-auto text-center px-2", className)}
     >
-      <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground">
+      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-foreground">
         {title}{" "}
         {highlight && <span className="text-primary">{highlight}</span>}
       </h2>
       {subtitle && (
-        <p className="mt-4 text-lg text-muted-foreground leading-relaxed">{subtitle}</p>
+        <p className="mt-3 sm:mt-4 text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed">{subtitle}</p>
       )}
     </motion.div>
   );

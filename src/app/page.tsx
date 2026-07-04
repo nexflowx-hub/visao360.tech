@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Topbar } from "@/components/visao/topbar";
 import { Footer } from "@/components/visao/footer";
 import { Hero } from "@/sections/hero";
+import { Features } from "@/sections/features";
 import { HowCanWeHelp } from "@/sections/how-can-we-help";
 import { HowWeWork } from "@/sections/how-we-work";
 import { Statistics } from "@/sections/statistics";
@@ -13,10 +14,10 @@ import { FAQ } from "@/sections/faq";
 import { OtherSolutions } from "@/sections/other-solutions";
 import { ContactCTA } from "@/sections/contact-cta";
 import { AIConsultantWizard } from "@/features/ai-consultant/wizard";
-import { CategoryPage } from "@/pages/category-page";
-import { ContatoPage } from "@/pages/contato-page";
-import { InstalacoesPage } from "@/pages/instalacoes-page";
-import { OrcamentoPage } from "@/pages/orcamento-page";
+import { CategoryPage } from "@/views/category-page";
+import { ContatoPage } from "@/views/contato-page";
+import { InstalacoesPage } from "@/views/instalacoes-page";
+import { OrcamentoPage } from "@/views/orcamento-page";
 import { useHashRouter, type PageSlug } from "@/lib/router";
 import { MAIN_CATEGORIES } from "@/lib/constants";
 
@@ -24,6 +25,7 @@ function HomePage({ onOpenConsultant }: { onOpenConsultant: (cat?: string) => vo
   return (
     <>
       <Hero onOpenConsultant={onOpenConsultant} />
+      <Features />
       <HowCanWeHelp />
       <HowWeWork />
       <Statistics />

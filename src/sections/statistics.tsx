@@ -12,9 +12,9 @@ const stats = [
 
 export function Statistics() {
   return (
-    <section className="py-14 md:py-16 bg-[#0A2647]">
+    <section className="py-12 md:py-16 bg-[#0A2647]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
           {stats.map((stat, i) => (
             <motion.div
               key={stat.label}
@@ -22,13 +22,15 @@ export function Statistics() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.4, delay: i * 0.1 }}
-              className="text-center"
+              className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 text-center sm:text-left"
             >
-              <div className="flex items-center justify-center mb-3">
-                <stat.icon className="w-6 h-6 text-blue-300" />
+              <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-white/10 shrink-0">
+                <stat.icon className="w-5 h-5 text-blue-300" />
               </div>
-              <p className="text-3xl md:text-4xl font-extrabold text-white tracking-tight">{stat.value}</p>
-              <p className="mt-1 text-sm text-blue-200/70">{stat.label}</p>
+              <div>
+                <p className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight">{stat.value}</p>
+                <p className="mt-0.5 text-xs sm:text-sm text-blue-200/70">{stat.label}</p>
+              </div>
             </motion.div>
           ))}
         </div>
